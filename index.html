@@ -321,5 +321,18 @@
     
     
     <script src="script.js"></script>
+    <script>
+        if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual"; // Prevent browser scroll restoration
+        }
+    
+        window.addEventListener("load", () => {
+            // Smoothly scroll to the top on page load
+            document.documentElement.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        });
+    </script>
 </body>
 </html>
