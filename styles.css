@@ -4,7 +4,50 @@
     padding: 0;
     box-sizing: border-box;
 }
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+h1 {
+    font-size: 2rem;
+}
 
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    nav ul {
+        flex-direction: row;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header-text {
+        text-align: center;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -78,7 +121,8 @@ body {
 .popup-content button:hover {
     background: #d62828;
 }
-/* Header Section */
+/* 
+Section */
 header {
     background: #fff;
     padding: 10px 20px;
@@ -105,7 +149,7 @@ header {
 }
 
 .logo-section img {
-    height: 50px;
+    height: 150px; /* Or any other value you'd like */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Poppins:wght@600&display=swap');
@@ -181,15 +225,24 @@ nav ul li a:hover {
     text-align: left;
     max-width: 800px;
 }
+/* Default styles for desktop */
 .parallax h1 {
-    font-size: 3rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-size: 3rem;  /* Adjust this to your desired desktop font size */
 }
 
 .parallax p {
-    font-size: 1.2rem;
-    margin: 15px 0;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    font-size: 1.5rem;  /* Adjust the paragraph font size for desktop */
+}
+
+/* For mobile screens, reduce font size */
+@media (max-width: 768px) {
+    .parallax h1 {
+        font-size: 2rem;  /* Reduce the font size for mobile */
+    }
+
+    .parallax p {
+        font-size: 1.2rem;  /* Reduce the paragraph font size for mobile */
+    }
 }
 
 .parallax .buttons {
@@ -350,69 +403,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Why Us Section */
-.why-us {
-    background-image: url('https://i.ibb.co/MVC1D6V/TVDTech-logo-O.jpg'); /* Watermark image */
-    background-repeat: no-repeat;
-    background-position: 70% center; /* Center the watermark */
-    background-size: 30%; /* Adjust size of watermark */
-    background-color: rgba(255, 255, 255, 0.9); /* Light overlay to tone down watermark */
-    background-blend-mode: lighten; /* Blend the image lightly */
-    padding: 50px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-
-
-
-.why-us h2 {
-    font-size: 2.5rem;
-    color: #1e293b;
-    margin-bottom: 30px;
-}
-
-.why-us-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.why-us-content img {
-    max-width: 500px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.why-us-content ul {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    max-width: 600px;
-}
-
-.why-us-content ul li {
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.why-us-content ul li span {
-    color: #e63946;
-    font-size: 1.5rem;
-}
-
-
-.WhyH:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* More prominent shadow on hover */
-    color: #693337;
-}
 
 /* Key Facts Section */
 .key-facts {
@@ -482,6 +472,35 @@ nav ul li a:hover {
     width: 100%;
 }
 
+.contact-info .info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adds space between the sections */
+}
+
+.contact-info .info div {
+  flex: 1; /* Ensures equal width for all sections */
+  min-width: 200px;
+}
+
+.contact-info .info h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white; /* Ensures the headings are white */
+}
+
+.contact-info .info p,
+.contact-info .info a {
+  font-size: 16px;
+  color: white; /* Sets text and links to white */
+  text-decoration: none; /* Removes underline for links */
+}
+
+.contact-info .info a:hover {
+  text-decoration: underline; /* Optional: Adds underline on hover */
+  color: white; /* Keeps hover color white */
+}
+
 .contact-info {
     flex: 1 1 40%;
 }
@@ -492,11 +511,11 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
-.contact-info .info h3 {
+/* .contact-info .info h3 {
     font-size: 1.2rem;
     color: #00ff7f;
     margin-bottom: 5px;
-}
+} */
 
 .contact-info .info p {
     color: #d1e8f2;
@@ -763,6 +782,37 @@ textarea {
     transform: rotate(180deg); /* Rotate text for proper orientation */
     margin-top: 5px;
 }
+#world-clock {
+    text-align: center;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.clock {
+    background: #1e3938;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    text-align: center;
+}
+
+.clock h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -785,11 +835,41 @@ textarea {
     }
 }
 @media (max-width: 768px) {
+    .contact-form {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
     .key-facts {
         flex-direction: column;
         text-align: center;
     }
 }
+/* Default desktop styles */
+.company-name {
+    font-size: 2rem;  /* Adjust to a more appropriate size for desktop */
+}
+
+/* Logo section styling */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* For mobile screens, stack logo and text and reduce font size */
+@media (max-width: 768px) {
+    .logo-section {
+        flex-direction: column; /* Stack logo and text vertically on small screens */
+        align-items: center;    /* Center align the content */
+    }
+    
+    .company-name {
+        font-size: 1.5rem;  /* Reduce font size for mobile */
+        text-align: center; /* Ensure the text is centered */
+    }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .service-cards, .client-logos, .why-us-content {

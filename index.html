@@ -1,91 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                emailjs.init("K2tgfUFzF_Q6SLDAi"); // Replace with your EmailJS public key
-        
-                document.getElementById("contact-form").addEventListener("submit", function (e) {
-                    e.preventDefault(); // Prevent default form submission behavior
-        
-                    const name = document.getElementById("name").value;
-                    const phone = document.getElementById("phone").value;
-                    const email = document.getElementById("email").value;
-                    const message = document.getElementById("message").value;
-        
-                    // Prepare EmailJS parameters
-                    const templateParams = {
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        message: message,
-                    };
-        
-                    // Send email using EmailJS
-                    emailjs
-                        .send("service_6bgu39v", "template_3tyws1n", templateParams)
-                        .then(
-                            function (response) {
-                                alert("Message sent successfully!"); // Success message
-                                document.getElementById("contact-form").reset(); // Reset form
-                            },
-                            function (error) {
-                                alert("Failed to send message. Please try again."); // Error message
-                                console.error("EmailJS Error:", error);
-                            }
-                        );
-                });
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno Vision Digi Tech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            emailjs.init("K2tgfUFzF_Q6SLDAi"); // Replace with your EmailJS public key
+
+            // Hamburger Menu Toggle
+            const menuToggle = document.querySelector(".hamburger");
+            const navMenu = document.querySelector(".nav-menu");
+
+            menuToggle.addEventListener("click", function () {
+                navMenu.classList.toggle("active");
             });
-        </script>
-    
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Techno Vision Digi Tech</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    
+
+            document.getElementById("contact-form").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById("name").value;
+                const phone = document.getElementById("phone").value;
+                const email = document.getElementById("email").value;
+                const message = document.getElementById("message").value;
+
+                const templateParams = { name, phone, email, message };
+
+                emailjs
+                    .send("service_6bgu39v", "template_3tyws1n", templateParams)
+                    .then(
+                        function () {
+                            alert("Message sent successfully!");
+                            document.getElementById("contact-form").reset();
+                        },
+                        function (error) {
+                            alert("Failed to send message. Please try again.");
+                            console.error("EmailJS Error:", error);
+                        }
+                    );
+            });
+        });
+    </script>
+    <style>
+        /* Add this styling for hamburger menu and responsiveness */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+       
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-section img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0 10px;
+        }
+
+        .nav-menu li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background-color: #000;
+            margin: 2px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                background-color: #444;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 10px 0;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
 <body>
-    <div id="popup-modal" class="popup-modal">
-        <div class="popup-content">
-            <h3>Switch to Desktop Mode</h3>
-            <p>For the best experience, please turn on Desktop Mode in your browser:</p>
-            <ol>
-                <li><strong>Chrome (Android):</strong> Tap the three dots menu &gt; "Desktop site".</li>
-                <li><strong>Safari (iOS):</strong> Tap the "AA" icon in the address bar &gt; "Request Desktop Site".</li>
-            </ol>
-            <button id="close-popup">OK</button>
-        </div>
-    </div>
+
+    <!-- Header -->
     <header>
-
-        <div class="header-container">
-            <div class="logo-section">
-                <img src="https://i.ibb.co/WcnqFkr/TVDLogo.png" alt="Techno Vision Digi Tech Logo">
-                <div>
-                    <h1 class="company-name">Techno Vision Digi Tech</h1>
-                    <span class="company-tagline">We make your Ideas to Reality...</span>
-
-                </div>
+        <div class="logo-section">
+            <img src="https://res.cloudinary.com/dkncy6yld/image/upload/v1738038594/l31zoz7gwpo75mbxer4n.png">
+            <div>
+                <h1 class="company-name">Techno Vision Digi Tech</h1>
             </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#clients">Our Clients</a></li>
-                    <li><a href="#why-us">Why Us?</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
         </div>
+        <nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+           <style>
+    .nav-menu li a {
+        color: black;
+    }
+</style>
+
+<ul class="nav-menu">
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#clients">Our Clients</a></li>
+    <li><a href="#why-us">Why Us?</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+</ul>
+        </nav>
     </header>
 
+    <!-- Parallax Section -->
     <section class="parallax">
         <div class="parallax-content">
-            <h1>Building a Smarter Future, One solution at a Time!</h1>
+            <h1>Building a Smarter Future, One Solution at a Time!</h1>
             <p>At Techno Vision Digi Tech, we bring your vision to life with cutting-edge technology solutions.</p>
             <div class="buttons">
                 <a href="#about">Know More</a>
@@ -154,7 +223,7 @@
     
 
     <section id="clients" class="clients">
-        <h2>Our Clients added</h2>
+        <h2>Our Clients</h2>
         <div class="client-logos">
             <img src="https://i.ibb.co/RPYcZRg/Oceanic-Systems.png" alt="Oceanic Systems">
             <img src="https://i.ibb.co/Cz4wj5V/Vertex-Technologies.png" alt="Vertex Technologies">
@@ -162,17 +231,64 @@
             <img src="https://i.ibb.co/7GMqPb2/Alpha-Dynamics.png" alt="Alpha Dynamics">
         </div>
     </section>
-    <section id="why-us" class="why-us">
-        <h2>Why Us?</h2>
-        <div class="why-us-content">
-            <img src="https://i.ibb.co/SxbcJst/why-us-ban.jpg" alt="Why Us">
-            <ul>
-                <li><span>&#10004;</span> Extensive experience, top-notch expertise, and undeniable deliverance are the prime features of the professionals at Techno Vision Digi Tech.</li>
-                <li><span>&#10004;</span> We don’t compromise on the use of the most credible technology and the most reliable tools. To ensure the provision of top-quality solutions, we extract the best from the latest advancements in the industry.</li>
-                <li><span>&#10004;</span> We’ve set the highest standards and stand by our commitment to delivering excellence.</li>
-            </ul>
-        </div>
-    </section>
+    <style>
+    /* Default desktop styles */
+    .why-us-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .why-us-content img {
+        width: 35%;
+    }
+
+    .why-us-content ul {
+        width: 50%;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .why-us-content li {
+        margin-bottom: 10px;
+    }
+
+    /* Mobile responsive styles */
+    @media screen and (max-width: 768px) {
+        .why-us-content {
+            flex-direction: column;
+            align-items: center;
+        }
+          
+        .why-us-content img {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .why-us-content ul {
+            width: 100%;
+            text-align: center;
+        }
+
+        .why-us-content li {
+            margin-bottom: 15px;
+        }
+      
+      
+    }
+</style>
+
+<section id="why-us" class="why-us">
+    <div class="why-us-content">
+        <img src="https://i.ibb.co/SxbcJst/why-us-ban.jpg" alt="Why Us">
+        <ul>
+            <li><span>&#10004;</span> Extensive experience, top-notch expertise, and undeniable deliverance are the prime features of the professionals at Techno Vision Digi Tech.</li>
+            <li><span>&#10004;</span> We don’t compromise on the use of the most credible technology and the most reliable tools. To ensure the provision of top-quality solutions, we extract the best from the latest advancements in the industry.</li>
+            <li><span>&#10004;</span> We’ve set the highest standards and stand by our commitment to delivering excellence.</li>
+        </ul>
+    </div>
+</section>
+
     <section id="key-facts" class="key-facts">
     <h2>Milestones</h2>
     <div class="facts-container">
@@ -193,61 +309,70 @@
         </div>
     </div>
 </section>
-
+<section class="parallax">
+    <div class="parallax-content">
     <section id="contact" class="contact-section">
-        <div class="contact-container">
-            <!-- Left Section: Contact Details -->
-            <div class="contact-info">
-                <h2>Get in Touch</h2>
-                <div class="info">
-                    <div class="office">
-                        <h3>Office</h3>
-                        <p>Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
-                    </div>
-                    <div class="contact">
-                        <h3>Contact</h3>
-                        <p>+91-8688722787</p>
-                    </div>
-                    <div class="maps-link">
-                        <h3>Find Us</h3>
-                        <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">View on Google Maps</a>
+    <div class="contact-container">
+        <!-- Left Section: Contact Details -->
+        <div class="contact-info">
+  <h2>Get in Touch</h2>
+  <div class="info">
+    <div class="office">
+      <h3>Office</h3>
+      <p>Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
+    </div>
+    <div class="contact">
+      <h3>Contact</h3>
+      <p>+91-8688722787</p>
+    </div>
+    <div class="hr-email">
+      <h3>HR Email</h3>
+      <p><a href="mailto:hr@example.com">info@technovisiondigitech.com</a></p>
+    </div>
+    <div class="maps-link">
+      <h3>Find Us</h3>
+      <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">View on Google Maps</a>
+    </div>
+  </div>
+</div>
+
+        <!-- Right Section: Contact Form -->
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name <span>*</span></label>
+                    <div class="input-wrapper">
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+                        <i class="icon-user"></i>
                     </div>
                 </div>
-            </div>
-    
-            <!-- Right Section: Contact Form -->
-            <div class="contact-form">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name <span>*</span></label>
-                        <div class="input-wrapper">
-                            <input type="text" id="name" name="name" placeholder="Enter your name" required />
-                            <i class="icon-user"></i>
-                        </div>
+                <div class="form-group">
+                    <label for="phone">Phone <span>*</span></label>
+                    <div class="input-wrapper">
+                        <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required />
+                        <i class="icon-phone"></i>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Phone <span>*</span></label>
-                        <div class="input-wrapper">
-                            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required />
-                            <i class="icon-phone"></i>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address <span>*</span></label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+                        <i class="icon-email"></i>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address <span>*</span></label>
-                        <div class="input-wrapper">
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required />
-                            <i class="icon-email"></i>
-                        </div>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="message">Inquiry</label>
-                        <textarea id="message" name="message" placeholder="Enter your Message"></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit</button>
-                </form>
-            </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="message">Inquiry</label>
+                    <textarea id="message" name="message" placeholder="Enter your Message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
         </div>
-    </section>
+    </div>
+    </div>
+</section>
+  </div>
+</section>
+
     
     
         <!-- Embedded Google Map -->
@@ -264,13 +389,6 @@
     </section>
     <footer class="footer">
         <div class="footer-container">
-            <!-- Left Section -->
-            <div class="footer-logo">
-                <img src="https://i.ibb.co/WcnqFkr/TVDLogo.png" alt="Techno Vision Digi Tech Logo">
-                <p>
-                    Techno Vision Digi Tech is a leading consulting and IT services company, providing custom software development, cloud computing, and QA services to businesses globally.
-                </p>
-            </div>
     
             <!-- Middle Section -->
             <div class="footer-links">
@@ -315,7 +433,7 @@
         </div>
     
         <div class="footer-bottom">
-            <p>© 2025 copyright <strong>Techno Vision Digi Tech</strong>  | Built by AmarNext Solutions</p>
+            <p>© 2025 copyright <strong>Techno Vision Digi Tech</strong>  | Built by Amar CodeWorks.</p>
         </div>
     </footer>
     
