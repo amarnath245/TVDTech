@@ -114,3 +114,87 @@ const observer = new IntersectionObserver(
 const keyFactsSection = document.querySelector('#key-facts');
 observer.observe(keyFactsSection);
 });
+// Wait for DOM content to load
+document.addEventListener('DOMContentLoaded', () => {
+    const chatIcon = document.getElementById('chat-icon');
+    const contactFormSection = document.getElementById('contact-form-section');
+
+    // Check if the device is not mobile (screen width > 767px)
+    if (window.innerWidth > 767) {
+        // When the chat icon is clicked, scroll the page to the contact form section
+        chatIcon.addEventListener('click', () => {
+            contactFormSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    }
+});
+let lastScrollTop = 0;
+const scrollThreshold = 100; // Hide header after scrolling 100px
+
+window.addEventListener("scroll", function() {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+        document.querySelector("header").classList.add("hidden");
+    } else {
+        document.querySelector("header").classList.remove("hidden");
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+const technologiesSection = document.querySelector('.technologies');
+
+function checkVisibility() {
+    const sectionTop = technologiesSection.getBoundingClientRect().top;
+    const sectionBottom = technologiesSection.getBoundingClientRect().bottom;
+
+    // Check if the section is in the viewport
+    if (sectionTop < window.innerHeight && sectionBottom >= 0) {
+        technologiesSection.classList.add('visible');
+    }
+}
+
+window.addEventListener('scroll', checkVisibility);
+window.addEventListener('load', checkVisibility); // Check on page load
+const images = [
+    {
+        title: "Building a Smarter Future, One Solution at a Time!",
+        text: "At Techno Vision Digi Tech, we bring your vision to life with cutting-edge technology solutions."
+    },
+    {
+        title: "Innovative Technology for a Better Tomorrow!",
+        text: "Harnessing the power of AI and cloud computing to transform businesses."
+    },
+    {
+        title: "Empowering Businesses with Digital Transformation!",
+        text: "We help organizations adapt and grow in the digital era with customized solutions."
+    }
+];
+
+let currentIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const titleElement = document.getElementById("parallax-title");
+const textElement = document.getElementById("parallax-text");
+
+function changeSlide() {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add("active");
+
+    // Fade out text before changing
+    titleElement.style.opacity = "0";
+    textElement.style.opacity = "0";
+
+    setTimeout(() => {
+        titleElement.textContent = images[currentIndex].title;
+        textElement.textContent = images[currentIndex].text;
+
+        // Fade text back in
+        titleElement.style.opacity = "1";
+        textElement.style.opacity = "1";
+    }, 500);
+}
+
+setInterval(changeSlide, 2500); // Change image every 5 seconds

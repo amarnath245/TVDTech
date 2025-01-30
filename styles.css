@@ -8,7 +8,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
 }
 h1 {
     font-size: 2rem;
@@ -54,23 +54,22 @@ body {
     overflow-x: hidden;
 }
 .popup-modal {
+    display: none; /* Hide initially */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
     align-items: center;
-    z-index: 1000;
-    visibility: hidden;
+    justify-content: center;
+    z-index: 9999;
     opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .popup-modal.active {
-    visibility: visible;
+    display: flex;
     opacity: 1;
 }
 
@@ -79,48 +78,15 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    width: 90%;
+}
+.drop-cap {
+    font-size: 3em; /* Makes the letter larger */
+    font-weight: bold; /* Makes it bold */
+    float: left; /* Floats the letter to the left */
+    margin-right: 10px; /* Adds space to the right of the drop cap */
+    line-height: 1; /* Adjusts the line height for the drop cap */
 }
 
-.popup-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #e63946;
-}
-
-.popup-content p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.popup-content ol {
-    text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
-
-.popup-content ol li {
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    color: #333;
-}
-
-.popup-content button {
-    padding: 10px 20px;
-    background: #e63946;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.popup-content button:hover {
-    background: #d62828;
-}
 /* 
 Section */
 header {
@@ -154,16 +120,17 @@ header {
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Poppins:wght@600&display=swap');
 
+
 .company-name {
     font-family: 'Roboto Slab', 'Poppins', sans-serif; /* Use modern and clean fonts */
-    font-size: 1.2rem; /* Large and impactful font size */
+    font-size: 0.5rem; /* Very small font size */
     font-weight: 700; /* Bold text for strong presence */
     background: linear-gradient(90deg, #1f1816, #e63946); /* Eye-catching gradient */
     background-clip: text; /* Standard property */
     -webkit-background-clip: text; /* WebKit-specific property for Safari/Chrome */
     -webkit-text-fill-color: transparent; /* WebKit-specific for gradient visibility */
     color: transparent; /* Standard compatibility for background-clip */
-    letter-spacing: 1.5px; /* Improved letter spacing */
+    letter-spacing: 0.5px; /* Even tighter letter spacing */
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
     margin-left: 20px; /* Adds spacing from the logo */
     transition: all 0.3s ease; /* Smooth transition for hover effect */
@@ -173,20 +140,6 @@ header {
     transform: scale(1.1); /* Slight zoom effect on hover */
     text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* More prominent shadow on hover */
 }
-
-.company-tagline {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.7rem;
-    font-weight: bold; /* Bold text */
-    color: #0088cc;
-    margin-top: 5px; /* Adds space above the tagline */
-    text-align: center; /* Centers the text horizontally if needed */
-    letter-spacing: 0.5px;
-    font-style: italic; /* Italic text */
-    display: inline-block; /* Allows margin-left to work */
-    margin-left: 160px; /* Adjust this value to control horizontal spacing */
-}
-
 
 nav ul {
     display: flex;
@@ -209,42 +162,74 @@ nav ul li a:hover {
 
 /* Parallax Hero Section */
 .parallax {
-    background: url('https://res.cloudinary.com/dkncy6yld/image/upload/v1737910525/BG3451_iz18mh.jpg') no-repeat center center/cover;
+    position: relative;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
-    position: relative;
-    z-index: 1;
-    background-attachment: fixed;
+    overflow: hidden;
 }
 
+/* Slideshow container */
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Each slide */
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* Active slide is fully visible */
+.slide.active {
+    opacity: 1;
+}
+
+/* Overlay for better text visibility */
+.parallax::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Content */
 .parallax-content {
-    text-align: left;
+    position: relative;
+    z-index: 2;
+    text-align: center;
     max-width: 800px;
 }
+
 /* Default styles for desktop */
 .parallax h1 {
-    font-size: 3rem;  /* Adjust this to your desired desktop font size */
+    font-size: 3rem;
+    opacity: 0;
+    animation: fadeInText 2s ease-in-out forwards;
 }
 
 .parallax p {
-    font-size: 1.5rem;  /* Adjust the paragraph font size for desktop */
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: fadeInText 2s ease-in-out 0.5s forwards;
 }
 
-/* For mobile screens, reduce font size */
-@media (max-width: 768px) {
-    .parallax h1 {
-        font-size: 2rem;  /* Reduce the font size for mobile */
-    }
-
-    .parallax p {
-        font-size: 1.2rem;  /* Reduce the paragraph font size for mobile */
-    }
-}
-
+/* Buttons */
 .parallax .buttons {
     margin-top: 20px;
 }
@@ -262,6 +247,29 @@ nav ul li a:hover {
 
 .parallax .buttons a:hover {
     background: #d62828;
+}
+
+/* Fade in animation */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .parallax h1 {
+        font-size: 2rem;
+    }
+
+    .parallax p {
+        font-size: 1.2rem;
+    }
 }
 
 /* About Section */
@@ -453,153 +461,140 @@ nav ul li a:hover {
     color: #ffffff;
     margin-top: 10px;
 }
+/* Common background styling for both sections */
 .contact-section {
-    background-color: #002a45;
+    background: url('https://res.cloudinary.com/dkncy6yld/image/upload/v1737910525/BG3451_iz18mh.jpg') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax Effect */
+    position: relative;
     color: white;
-    padding: 30px 20px;
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 90%;
+    text-align: center;
+    padding: 100px 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;  /* Center the content horizontally */
+    align-items: center;      /* Center the content vertically */
+    min-height: 100vh;
 }
 
+/* Overlay effect to improve visibility */
 .contact-container {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    padding: 50px;
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
     width: 100%;
+    max-width: 800px; /* Limit width */
+    box-sizing: border-box;
+    position: relative;
 }
 
-.contact-info .info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Adds space between the sections */
-}
-
-.contact-info .info div {
-  flex: 1; /* Ensures equal width for all sections */
-  min-width: 200px;
-}
-
-.contact-info .info h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: white; /* Ensures the headings are white */
-}
-
-.contact-info .info p,
-.contact-info .info a {
-  font-size: 16px;
-  color: white; /* Sets text and links to white */
-  text-decoration: none; /* Removes underline for links */
-}
-
-.contact-info .info a:hover {
-  text-decoration: underline; /* Optional: Adds underline on hover */
-  color: white; /* Keeps hover color white */
-}
-
-.contact-info {
-    flex: 1 1 40%;
-}
-
-.contact-info h2 {
-    font-size: 1.8rem;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
-/* .contact-info .info h3 {
-    font-size: 1.2rem;
-    color: #00ff7f;
-    margin-bottom: 5px;
-} */
-
-.contact-info .info p {
-    color: #d1e8f2;
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-.contact-info .maps-link a {
-    color: #00bfff;
-    font-size: 1rem;
-    text-decoration: underline;
-}
-
+/* Contact Form Specific Styles */
 .contact-form {
-    flex: 1 1 55%;
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: #333;
+    margin-top: 30px;
+    padding: 30px;
+    width: 100%;
+    backdrop-filter: blur(10px); /* Glass effect */
+    background: rgba(0, 0, 0, 0.3); /* More transparent background */
+    border-radius: 10px;
+}
+.underline {
+    text-decoration: underline;
+    text-decoration-color: #ffcc00; /* Yellow underline color */
+    text-decoration-thickness: 2px;  /* Adjust thickness of the underline */
 }
 
-.contact-form label {
-    display: block;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
-    color: #002a45;
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/* Make the links white */
+.hr-email a,
+.maps-link a {
+    color: white;
+    text-decoration: none; /* Optional: Remove underline */
 }
 
-.contact-form span {
-    color: #e63946;
+.hr-email a:hover,
+.maps-link a:hover {
+    color: #ffcc00; /* Optional: Change color on hover */
+}
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffcc00; /* Highlight labels */
 }
 
 .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
 }
 
-input,
-textarea {
+.input-wrapper input, 
+.input-wrapper textarea {
     width: 100%;
-    padding: 10px 15px 10px 40px;
-    border: none;
-    border-radius: 10px;
-    background-color: #e6e6e6;
-    font-size: 1rem;
-    outline: none;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ffcc00;
+    background: rgba(255, 255, 255, 0.1); /* More transparent input fields */
+    color: white;
+}
+
+.input-wrapper input::placeholder,
+.input-wrapper textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 10px;
+    color: #ffcc00;
 }
 
 textarea {
-    height: 100px;
+    height: 120px;
     resize: none;
 }
 
-.icon-user,
-.icon-phone,
-.icon-email,
-.icon-briefcase {
-    position: absolute;
-    left: 10px;
-    font-size: 1rem;
-    color: #555;
-}
-
 .submit-btn {
-    background-color: #0077b6;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    font-size: 1rem;
+    background: #ffcc00;
+    color: #000;
     font-weight: bold;
-    text-transform: uppercase;
+    padding: 12px;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
+    border-radius: 5px;
 }
 
 .submit-btn:hover {
-    background-color: #005f86;
+    background: #e6b800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        background-attachment: scroll;  /* Disable parallax effect on mobile */
+        background-size: cover;  /* Ensure the background image covers the area */
+        padding: 50px 15px;
+        min-height: auto;  /* Adjust min-height for mobile */
+    }
+
+    .contact-container {
+        background: rgba(0, 0, 0, 0.7); /* Darker background for better visibility */
+        padding: 20px;
+    }
+
+    .contact-form {
+        backdrop-filter: none; /* Remove blur for mobile */
+        background: rgba(0, 0, 0, 0.5);  /* Keep a slight dark background */
+    }
+
+    .contact-container, .contact-form {
+        width: 100%;
+        margin: 0;  /* Ensure they take full width */
+    }
 }
 
 .map-container {
@@ -847,7 +842,7 @@ textarea {
 }
 /* Default desktop styles */
 .company-name {
-    font-size: 2rem;  /* Adjust to a more appropriate size for desktop */
+    font-size: 1.5rem;  /* Adjust to a more appropriate size for desktop */
 }
 
 /* Logo section styling */
@@ -856,12 +851,71 @@ textarea {
     align-items: center;
     gap: 15px;
 }
+.footer-links i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 1rem; /* Adjust icon size */
+}
+.social-links a {
+    font-size: 1.5rem; /* Adjust icon size */
+    margin: 0 10px; /* Spacing between icons */
+    text-decoration: none; /* Remove underline */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-links a:hover {
+    opacity: 0.8; /* Slight transparency on hover */
+}
+
+/* Facebook color */
+.social-links .facebook {
+    color: #3b5998; /* Facebook brand color */
+}
+
+.social-links .facebook:hover {
+    color: #1d365d; /* Darker Facebook color on hover */
+}
+
+/* Twitter color */
+.social-links .twitter {
+    color: #1da1f2; /* Twitter brand color */
+}
+
+.social-links .twitter:hover {
+    color: #0d8bcd; /* Darker Twitter color on hover */
+}
+
+/* Instagram color */
+.social-links .instagram {
+    color: #c13584; /* Instagram brand color */
+}
+
+.social-links .instagram:hover {
+    color: #9e2a63; /* Darker Instagram color on hover */
+}
+
+/* LinkedIn color */
+.social-links .linkedin {
+    color: #0077b5; /* LinkedIn brand color */
+}
+
+.social-links .linkedin:hover {
+    color: #005c8e; /* Darker LinkedIn color on hover */
+}
+
+/* YouTube color */
+.social-links .youtube {
+    color: #ff0000; /* YouTube brand color */
+}
+
+.social-links .youtube:hover {
+    color: #cc0000; /* Darker YouTube color on hover */
+}
 
 /* For mobile screens, stack logo and text and reduce font size */
 @media (max-width: 768px) {
     .logo-section {
         flex-direction: column; /* Stack logo and text vertically on small screens */
-        align-items: center;    /* Center align the content */
+        align-items: center; /* Center align the content */
     }
     
     .company-name {
@@ -875,4 +929,279 @@ textarea {
     .service-cards, .client-logos, .why-us-content {
         flex-direction: column;
     }
+}
+.popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+}
+
+.popup-modal.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #e63946;
+}
+
+.popup-content p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.popup-content ol {
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.popup-content ol li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    background: #e63946;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.popup-content button:hover {
+    background: #d62828;
+}
+/* For mobile devices */
+@media (max-width: 768px) {
+    .key-facts .facts-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* Center the facts container horizontally */
+        justify-content: center; /* Vertically center the content */
+        text-align: center;   /* Center text */
+        height: 100vh;        /* Ensure it takes full viewport height */
+    }
+
+    .key-facts .fact {
+        margin: 10px 0;
+        width: 100%;          /* Make each fact take up the full width */
+    }
+
+    .key-facts .fact p,
+    .key-facts .fact h3,
+    .key-facts .fact .fact-detail {
+        text-align: center;   /* Center each element's text */
+    }
+}
+.technologies {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #f4f4f4; /* Adjust background color as needed */
+}
+
+.technologies h2 {
+    font-size: 3rem;  /* Make the title larger */
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333; /* Color for the title */
+}
+
+.description {
+    font-size: 1.5rem; /* Make the description text bigger */
+    font-weight: bold; /* Make it bold */
+    color: #0066cc; /* Set the description color to blue */
+    margin-bottom: 40px;
+}
+
+.technologies-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tech-logo {
+    text-align: center;
+    width: 150px; /* Adjust the width of each logo */
+}
+
+.tech-logo img {
+    width: 80px; /* Adjust the size of the logos */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.tech-logo p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+/* Chat Icon Styling */
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* Contact Form Section */
+#contact-form-section {
+    padding: 30px;
+    background-color: white;
+    margin-top: 50px; /* Add some space if needed */
+}
+
+/* Hide chat icon and scroll behavior on mobile */
+@media screen and (max-width: 767px) {
+    .chat-icon {
+        display: none; /* Hide chat icon on mobile */
+    }
+}
+
+/* Form Inputs and Buttons */
+.contact-form .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+/* Initial header style for mobile */
+/* Apply to all screen sizes */
+header {
+    position: fixed;   /* Fixed position at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: top 0.3s ease-in-out;  /* Smooth transition when hiding */
+}
+
+/* Hide the header when the 'hidden' class is applied */
+header.hidden {
+    top: -100%;  /* Move header completely out of view */
+}
+/* Section Styling */
+.technologies {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+    background-size: 200% 200%;
+    animation: gradientBackground 10s ease infinite;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.technologies.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Heading Styling */
+.section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #000; /* Black color */
+}
+
+/* Description Styling */
+.description {
+    font-size: 1.2rem;
+    color: blue; /* Blue color */
+    margin-bottom: 40px;
+}
+
+/* Logos Container */
+.technologies-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Individual Logo Styling */
+.tech-logo {
+    text-align: center;
+    width: 120px;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.technologies.visible .tech-logo {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.tech-logo img {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tech-logo:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.tech-logo p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Background Animation */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }

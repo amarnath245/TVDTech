@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Techno Vision Digi Tech</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -44,7 +45,9 @@
                     );
             });
         });
+
     </script>
+
     <style>
         /* Add this styling for hamburger menu and responsiveness */
         body {
@@ -150,18 +153,25 @@
 </ul>
         </nav>
     </header>
+<!-- Parallax Section -->
+<section class="parallax">
+    <div class="slideshow">
+        <div class="slide active" style="background-image: url('https://res.cloudinary.com/dkncy6yld/image/upload/v1737910525/BG3451_iz18mh.jpg');"></div>
+        <div class="slide" style="background-image: url('https://res.cloudinary.com/dkncy6yld/image/upload/v1738217232/The-Benefits-of-Using-AI-Based-Vision-Inspection-Software-in-Improving-Product-Quality-1536x863_cnsfu2.webp');"></div>
+        <div class="slide" style="background-image: url('https://res.cloudinary.com/dkncy6yld/image/upload/v1738217232/Why-Us-12_uiiydj.jpg');"></div>
+    </div>
 
-    <!-- Parallax Section -->
-    <section class="parallax">
-        <div class="parallax-content">
-            <h1>Building a Smarter Future, One Solution at a Time!</h1>
-            <p>At Techno Vision Digi Tech, we bring your vision to life with cutting-edge technology solutions.</p>
-            <div class="buttons">
-                <a href="#about">Know More</a>
-                <a href="#contact">Reach Us</a>
-            </div>
+    <div class="parallax-content">
+        <h1 id="parallax-title">Building a Smarter Future, One Solution at a Time!</h1>
+        <p id="parallax-text">At Techno Vision Digi Tech, we bring your vision to life with cutting-edge technology solutions.</p>
+        <div class="buttons">
+            <a href="#about">Know More</a>
+            <a href="#contact">Reach Us</a>
         </div>
-    </section>
+    </div>
+</section>
+
+
 
     <section id="about" class="about">
         <h2>About Our Company</h2>
@@ -280,7 +290,7 @@
 
 <section id="why-us" class="why-us">
     <div class="why-us-content">
-        <img src="https://i.ibb.co/SxbcJst/why-us-ban.jpg" alt="Why Us">
+        <img src="https://res.cloudinary.com/dkncy6yld/image/upload/v1738147633/Why-Us-12_guv0ff.jpg" alt="Why Us">
         <ul>
             <li><span>&#10004;</span> Extensive experience, top-notch expertise, and undeniable deliverance are the prime features of the professionals at Techno Vision Digi Tech.</li>
             <li><span>&#10004;</span> We don’t compromise on the use of the most credible technology and the most reliable tools. To ensure the provision of top-quality solutions, we extract the best from the latest advancements in the industry.</li>
@@ -309,32 +319,109 @@
         </div>
     </div>
 </section>
-<section class="parallax">
-    <div class="parallax-content">
-    <section id="contact" class="contact-section">
+<section id="technologies" class="technologies">
+    <h1 class="section-heading">Our Technologies</h1>
+    <p class="description">We deliver solutions with the goal of trusting relationships</p>
+    <div class="technologies-logos">
+        <!-- PHP -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP Logo">
+            <p>PHP</p>
+        </div>
+
+        <!-- Node.js -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo">
+            <p>Node.js</p>
+        </div>
+
+        <!-- CSS -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS Logo">
+            <p>CSS</p>
+        </div>
+
+        <!-- Angular -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg" alt="Angular Logo">
+            <p>Angular</p>
+        </div>
+
+        <!-- React -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo">
+            <p>React</p>
+        </div>
+
+        <!-- Python -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+            <p>Python</p>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo">
+            <p>JavaScript</p>
+        </div>
+
+        <!-- Docker -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" alt="Docker Logo">
+            <p>Docker</p>
+        </div>
+
+        <!-- Kubernetes -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg" alt="Kubernetes Logo">
+            <p>Kubernetes</p>
+        </div>
+
+        <!-- AWS -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo">
+            <p>AWS</p>
+        </div>
+
+        <!-- MongoDB -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" alt="MongoDB Logo">
+            <p>MongoDB</p>
+        </div>
+
+        <!-- MySQL -->
+        <div class="tech-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Database-mysql.svg" alt="MySQL Logo">
+            <p>MySQL</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section with Background Image -->
+<section id="contact" class="contact-section">
     <div class="contact-container">
-        <!-- Left Section: Contact Details -->
+        <!-- Left Section: Contact Information -->
         <div class="contact-info">
-  <h2>Get in Touch</h2>
-  <div class="info">
-    <div class="office">
-      <h3>Office</h3>
-      <p>Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
-    </div>
-    <div class="contact">
-      <h3>Contact</h3>
-      <p>+91-8688722787</p>
-    </div>
-    <div class="hr-email">
-      <h3>HR Email</h3>
-      <p><a href="mailto:hr@example.com">info@technovisiondigitech.com</a></p>
-    </div>
-    <div class="maps-link">
-      <h3>Find Us</h3>
-      <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">View on Google Maps</a>
-    </div>
-  </div>
-</div>
+            <h2 class="underline">Get in Touch</h2> <!-- Added class for styling -->
+            <div class="info">
+                <div class="office">
+                    <h3>Office</h3>
+                    <p>Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
+                </div>
+                <div class="contact">
+                    <h3>Contact</h3>
+                    <p>+91-8688722787</p>
+                </div>
+                <div class="hr-email">
+                    <h3>HR Email</h3>
+                    <p><a href="mailto:hr@example.com">HR@technovisiondigitech.com</a></p>
+                </div>
+                <div class="maps-link">
+                    <h3>Find Us</h3>
+                    <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">View on Google Maps</a>
+                </div>
+            </div>
+        </div>
 
         <!-- Right Section: Contact Form -->
         <div class="contact-form">
@@ -368,9 +455,6 @@
             </form>
         </div>
     </div>
-    </div>
-</section>
-  </div>
 </section>
 
     
@@ -392,36 +476,45 @@
     
             <!-- Middle Section -->
             <div class="footer-links">
-                <h3>Quick Links</h3>
+                <h3><i class="fas fa-link"></i> Quick Links</h3>
                 <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#why-us">Why Us</a></li>
-                    <li><a href="#clients">Our Clients</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#why-us"><i class="fas fa-question-circle"></i> Why Us</a></li>
+                    <li><a href="#clients"><i class="fas fa-users"></i> Our Clients</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a></li>
                 </ul>
             </div>
+            
     
             <!-- Right Section -->
             <div class="footer-contact">
                 <h3>Address</h3>
-                <p>Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
-                <p><i class="icon-phone"></i> +91-8688722787</p>
-                <p><i class="icon-email"></i> info@technovisiondigitech.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
+                
+                <p><i class="fas fa-phone-alt"></i> +91-8688722787</p>
+                
+                <p><i class="fas fa-envelope"></i> HR@technovisiondigitech.com</p>
+                
                 <h3>Find Us</h3>
-                <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">View on Google Maps</a>
+                <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">
+                    <i class="fas fa-map-marked-alt"></i> View on Google Maps
+                </a>
             </div>
+            
         </div>
     
         <div class="footer-social-back">
             <!-- Social Media Links -->
             <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" aria-label="Twitter" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com" target="_blank" aria-label="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
             </div>
+            
+            
             <body id="top">
             <!-- Back to Top Button -->
             <a href="#top" class="back-to-top" id="backToTop">
@@ -433,7 +526,7 @@
         </div>
     
         <div class="footer-bottom">
-            <p>© 2025 copyright <strong>Techno Vision Digi Tech</strong>  | Built by Amar CodeWorks.</p>
+            <p>© 2025 copyright <strong>Techno Vision Digi Tech</strong>  | Built by AmarNext Solutions.</p>
         </div>
     </footer>
     <script src="script.js"></script>
