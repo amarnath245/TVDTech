@@ -53,32 +53,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
-.popup-modal {
-    display: none; /* Hide initially */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
 
-.popup-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
 .drop-cap {
     font-size: 3em; /* Makes the letter larger */
     font-weight: bold; /* Makes it bold */
@@ -490,13 +465,25 @@ nav ul li a:hover {
 }
 
 /* Contact Form Specific Styles */
-.contact-form {
-    margin-top: 30px;
-    padding: 30px;
-    width: 100%;
-    backdrop-filter: blur(10px); /* Glass effect */
-    background: rgba(0, 0, 0, 0.3); /* More transparent background */
-    border-radius: 10px;
+@media (max-width: 768px) {
+    .contact-form {
+        display: block !important;  /* Ensures visibility */
+        width: 100%;  /* Makes sure it fits properly */
+    }
+
+    .contact-form form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
 }
 .underline {
     text-decoration: underline;
@@ -504,11 +491,6 @@ nav ul li a:hover {
     text-decoration-thickness: 2px;  /* Adjust thickness of the underline */
 }
 
-.contact-form form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 /* Make the links white */
 .hr-email a,
 .maps-link a {

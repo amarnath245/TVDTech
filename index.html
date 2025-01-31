@@ -9,44 +9,6 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            emailjs.init("K2tgfUFzF_Q6SLDAi"); // Replace with your EmailJS public key
-
-            // Hamburger Menu Toggle
-            const menuToggle = document.querySelector(".hamburger");
-            const navMenu = document.querySelector(".nav-menu");
-
-            menuToggle.addEventListener("click", function () {
-                navMenu.classList.toggle("active");
-            });
-
-            document.getElementById("contact-form").addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                const name = document.getElementById("name").value;
-                const phone = document.getElementById("phone").value;
-                const email = document.getElementById("email").value;
-                const message = document.getElementById("message").value;
-
-                const templateParams = { name, phone, email, message };
-
-                emailjs
-                    .send("service_6bgu39v", "template_3tyws1n", templateParams)
-                    .then(
-                        function () {
-                            alert("Message sent successfully!");
-                            document.getElementById("contact-form").reset();
-                        },
-                        function (error) {
-                            alert("Failed to send message. Please try again.");
-                            console.error("EmailJS Error:", error);
-                        }
-                    );
-            });
-        });
-
-    </script>
 
     <style>
         /* Add this styling for hamburger menu and responsiveness */
@@ -55,8 +17,6 @@
             margin: 0;
             padding: 0;
         }
-
-       
 
         .logo-section {
             display: flex;
@@ -128,7 +88,7 @@
         <div class="logo-section">
             <img src="https://res.cloudinary.com/dkncy6yld/image/upload/v1738038594/l31zoz7gwpo75mbxer4n.png">
             <div>
-                <h1 class="company-name">Techno Vision Digi Tech</h1>
+                <h1 class="company-name">TechnoVision DigiTech Pvt Ltd</h1>
             </div>
         </div>
         <nav>
@@ -410,15 +370,16 @@
                 </div>
                 <div class="contact">
                     <h3>Contact</h3>
-                    <p>+91-8688722787</p>
+                    <p>+91-881434 05005</p>
                 </div>
                 <div class="hr-email">
                     <h3>HR Email</h3>
-                    <p><a href="mailto:hr@example.com">HR@technovisiondigitech.com</a></p>
+                    <p><a href="mailto:info@technovisiondigitech.com" style="text-decoration: underline; font-weight: bold;">info@technovisiondigitech.com
+                    </a></p>                    
                 </div>
                 <div class="maps-link">
                     <h3>Find Us</h3>
-                    <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">View on Google Maps</a>
+                    <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" style="text-decoration: underline; font-weight: bold;">View on Google Maps</a>
                 </div>
             </div>
         </div>
@@ -490,11 +451,11 @@
             <!-- Right Section -->
             <div class="footer-contact">
                 <h3>Address</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Plot No:34, Sai Enclave, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
+                <p><i class="fas fa-map-marker-alt"></i> Plot No:34, Sai Enclave Floor-2, Bhola Nagar, Banjara Hills, Hyderabad, Telangana 500034</p>
                 
-                <p><i class="fas fa-phone-alt"></i> +91-8688722787</p>
+                <p><i class="fas fa-phone-alt"></i> +91-81434 05005</p>
                 
-                <p><i class="fas fa-envelope"></i> HR@technovisiondigitech.com</p>
+                <p><i class="fas fa-envelope"></i> info@technovisiondigitech.com</p>
                 
                 <h3>Find Us</h3>
                 <a href="https://maps.app.goo.gl/m3p6f8a4xUK5v99Q6" target="_blank">
@@ -506,12 +467,19 @@
     
         <div class="footer-social-back">
             <!-- Social Media Links -->
-            <div class="social-links">
+            <!-- <div class="social-links">
                 <a href="#" target="_blank" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" target="_blank" aria-label="Twitter" class="twitter"><i class="fab fa-twitter"></i></a>
                 <a href="#" target="_blank" aria-label="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/company/technovision-digitech-pvt-ltd/about/?viewAsMember=true" target="_blank" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://www.youtube.com" target="_blank" aria-label="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
+            </div> -->
+            <div class="social-links">
+                <a  aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a  aria-label="Twitter" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a  aria-label="Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/technovision-digitech-pvt-ltd/about/?viewAsMember=true" target="_blank" aria-label="LinkedIn" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a  target="_blank" aria-label="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
             </div>
             
             

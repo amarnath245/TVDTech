@@ -115,21 +115,7 @@ const keyFactsSection = document.querySelector('#key-facts');
 observer.observe(keyFactsSection);
 });
 // Wait for DOM content to load
-document.addEventListener('DOMContentLoaded', () => {
-    const chatIcon = document.getElementById('chat-icon');
-    const contactFormSection = document.getElementById('contact-form-section');
 
-    // Check if the device is not mobile (screen width > 767px)
-    if (window.innerWidth > 767) {
-        // When the chat icon is clicked, scroll the page to the contact form section
-        chatIcon.addEventListener('click', () => {
-            contactFormSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-    }
-});
 let lastScrollTop = 0;
 const scrollThreshold = 100; // Hide header after scrolling 100px
 
@@ -198,3 +184,63 @@ function changeSlide() {
 }
 
 setInterval(changeSlide, 2500); // Change image every 5 seconds
+document.addEventListener("DOMContentLoaded", function () {
+    emailjs.init("cJAE3Z4bRMQO-wjol"); // Replace with your EmailJS public key
+
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value; // User's email
+        const message = document.getElementById("message").value;
+
+        const templateParams = {
+            from_name: name,
+            from_email: email, // This should match the {{email}} field in EmailJS template
+            phone: phone,
+            message: message
+        };
+
+        emailjs
+            .send("service_guo3736", "template_pjz5a5h", templateParams)
+            .then(
+                function () {
+                    alert("Message sent successfully!");
+                    document.getElementById("contact-form").reset();
+                },
+                function (error) {
+                    alert("Failed to send message. Please try again.");
+                    console.error("EmailJS Error:", error);
+                }
+            );
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        // Toggle menu when clicking on the hamburger icon
+        hamburger.addEventListener("click", function () {
+            navMenu.classList.toggle("active");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+                navMenu.classList.remove("active");
+            }
+        });
+
+        // Close menu on scroll
+        window.addEventListener("scroll", function () {
+            navMenu.classList.remove("active");
+        });
+    });
+document.addEventListener("click", function (e) {
+    if (e.target.matches(".btn")) {
+        console.log("Button clicked!");
+    }
+});
