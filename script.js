@@ -244,3 +244,61 @@ document.addEventListener("click", function (e) {
         console.log("Button clicked!");
     }
 });
+// Chatbot Toggle
+// const chatbotContainer = document.getElementById('chatbot-container');
+// const chatbotToggleBtn = document.getElementById('chatbot-toggle-btn');
+// const chatbotCloseBtn = document.getElementById('chatbot-close-btn');
+
+// chatbotToggleBtn.addEventListener('click', () => {
+//     chatbotContainer.classList.toggle('active');
+// });
+
+// chatbotCloseBtn.addEventListener('click', () => {
+//     chatbotContainer.classList.remove('active');
+// });
+
+// // Chatbot Messages
+// const chatbotMessages = document.getElementById('chatbot-messages');
+// const chatbotInput = document.getElementById('chatbot-input');
+// const chatbotSendBtn = document.getElementById('chatbot-send-btn');
+
+// function addMessage(message, sender) {
+//     const messageElement = document.createElement('div');
+//     messageElement.classList.add('message', sender);
+//     messageElement.textContent = message;
+//     chatbotMessages.appendChild(messageElement);
+//     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+// }
+
+// // Simulate Bot Response
+// function getBotResponse(userMessage) {
+//     const responses = {
+//         "hi": "Hello! How can I assist you today?",
+//         "hello": "Hi there! How can I help you?",
+//         "services": "We offer custom software, mobile apps, and more. Visit our services section for details.",
+//         "contact": "You can reach us at info@technovisiondigitech.com or call +91-81434 05005.",
+//         "default": "I'm sorry, I didn't understand that. Can you please rephrase?"
+//     };
+
+//     return responses[userMessage.toLowerCase()] || responses["default"];
+// }
+
+// // Send Message
+// chatbotSendBtn.addEventListener('click', () => {
+//     const userMessage = chatbotInput.value.trim();
+//     if (userMessage) {
+//         addMessage(userMessage, 'user');
+//         chatbotInput.value = '';
+
+//         setTimeout(() => {
+//             const botResponse = getBotResponse(userMessage);
+//             addMessage(botResponse, 'bot');
+//         }, 500);
+//     }
+// });
+
+// chatbotInput.addEventListener('keypress', (e) => {
+//     if (e.key === 'Enter') {
+//         chatbotSendBtn.click();
+//     }
+// });
