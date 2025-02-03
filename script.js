@@ -308,8 +308,15 @@ document.addEventListener("DOMContentLoaded", function () {
     script.text = JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
+        "name": "TechnoVision Digitech",  // Optional but useful
         "url": "https://technovisiondigitech.com",
-        "logo": "https://res.cloudinary.com/dkncy6yld/image/upload/v1738551015/image-112x112_achabt.png"
+        "logo": "https://res.cloudinary.com/dkncy6yld/image/upload/v1738551015/image-112x112_achabt.png",
+        "description": "A leading provider of innovative software solutions",  // Optional but useful
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-8143405005",  // Optional but useful
+            "contactType": "Customer Service"
+        }
     });
     document.head.appendChild(script);
 });
