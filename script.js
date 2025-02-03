@@ -302,3 +302,14 @@ document.addEventListener("click", function (e) {
 //         chatbotSendBtn.click();
 //     }
 // });
+document.addEventListener("DOMContentLoaded", function () {
+    let script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "https://technovisiondigitech.com",
+        "logo": "https://res.cloudinary.com/dkncy6yld/image/upload/v1738551015/image-112x112_achabt.png"
+    });
+    document.head.appendChild(script);
+});
