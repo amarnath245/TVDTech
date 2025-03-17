@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.count');
     const speed = 100; // Increase the speed value for slower animation
