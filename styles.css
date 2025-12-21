@@ -1974,7 +1974,34 @@ textarea {
 .footer-contact a:hover {
     color: #005577;
 }
+/* Update back-to-top styles */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #007bff;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.back-to-top.show {
+    display: flex;
+}
+
+/* Remove from .footer-social-back if it's there */
+.footer-social-back .back-to-top {
+    position: static; /* Remove if inside footer */
+}
 /* Social Media and Back to Top */
 .footer-social-back {
     display: flex;
@@ -2593,3 +2620,4 @@ header.hidden {
     z-index: 999;
 >>>>>>> fd149b2 (Updated Description mistakes)
 } */
+ 

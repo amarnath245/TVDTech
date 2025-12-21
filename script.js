@@ -21,29 +21,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY + window.innerHeight;
-            const pageHeight = document.documentElement.scrollHeight;
+if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+        // Show button when user scrolls down 300px (much better UX)
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
 
-            if (scrollPosition >= pageHeight - 50) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Smooth scroll to top
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            const topElement = document.getElementById('top');
-            if (topElement) {
-                topElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-            }
-        });
-    }
+    });
+}
 
     // Intersection Observer for Counters (Alternative)
     const animateCounters = () => {
